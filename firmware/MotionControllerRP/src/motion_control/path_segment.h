@@ -13,7 +13,7 @@
 
 //*** CONST *****************************************************************************
 
-constexpr int NUM_JOINTS = 3;
+constexpr int NUM_JOINTS = 1;
 constexpr int NUM_TOOLS = 2;
 
 //*** CLASS *****************************************************************************
@@ -155,4 +155,3 @@ class JointSpacePathSegmentGenerator {
     const CartesianPathSegment* path_segment = nullptr;
     IKinematicModel* kinematic_model;
 };
-

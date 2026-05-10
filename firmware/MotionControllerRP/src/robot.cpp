@@ -10,7 +10,8 @@
 #include "hw_config.h"
 #include "utilities/logging.h"
 #include "utilities/utilities.h"
-#include "kinematic_models/kinematic_model_delta3d.h"
+// #include "kinematic_models/kinematic_model_delta3d.h"
+#include "kinematic_models/kinematic_model_1dof.h"
 #include "servo_control/homing_controller.h"
 #include "servo_control/actuator_calibration.h"
 #include "robot_joint/robot_joint.h"
@@ -43,7 +44,8 @@ Robot::Robot(float path_segment_time_step) :
   shared_data(SPINLOCK_ID_SHARED_DATA),
   joints_spin_lock(spin_lock_instance(SPINLOCK_ID_JOINTS))
 {
-  kinematic_model = new KinematicModel_Delta3D();
+  // kinematic_model = new KinematicModel_Delta3D();
+  kinematic_model = new KinematicModel_1DOF();
   path_planner.set_kinematic_model(kinematic_model);
 
   for(int i=0; i<NUM_JOINTS; i++)
@@ -86,6 +88,7 @@ void Robot::init() {
     joints[0] = new RobotJoint(encoder, motor_driver, MOTOR1_POLE_PAIRS);
   }
 
+  /*
   // axis 2
   {
     auto* encoder = new MT6835Encoder(spi0, PIN_ENCODER2_CS);
@@ -107,6 +110,7 @@ void Robot::init() {
 	encoder->set_crc_enabled(ENABLE_ENCODER_CRC);
     joints[2] = new RobotJoint(encoder, motor_driver, MOTOR3_POLE_PAIRS);
   }
+  */
 
   // initialize axes
   for(int i=0; i<NUM_JOINTS; i++) {
@@ -773,4 +777,3 @@ void Robot::process_tool_output_command(const GCodeCommand& cmd, std::string& re
 
   reply = "ok\n";
 }
-
