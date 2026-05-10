@@ -238,7 +238,7 @@ void Robot::update_servo_controllers(float dt) {
 
   // update axis target position and velocity from shared data
   spin_lock_unsafe_blocking(shared_data.lock);
-  for(int i=0; i<3; i++) {
+  for(int i=0; i<NUM_JOINTS; i++) {
     joints[i]->update_target(shared_data.joint_target_positions[i], 
                              shared_data.joint_target_velocities[i]);
   }
