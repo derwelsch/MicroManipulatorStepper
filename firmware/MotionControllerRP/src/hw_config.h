@@ -8,9 +8,9 @@
 // motor pole pair count
 //  * 100 for 0.9deg stepper motors
 //  * 50  for 1.8deg stepper motors
-constexpr float MOTOR1_POLE_PAIRS = 50;
-constexpr float MOTOR2_POLE_PAIRS = 50;
-constexpr float MOTOR3_POLE_PAIRS = 50;
+constexpr float MOTOR1_POLE_PAIRS = 5; // 50
+constexpr float MOTOR2_POLE_PAIRS = 5; // 50
+constexpr float MOTOR3_POLE_PAIRS = 5; // 50
 
 // max current factor in range [0..1]. Lower values reduce pwm resolution so a
 // value above 0.4 is recommended.
@@ -21,7 +21,7 @@ constexpr float MOTOR_MAX_CURRENT_FACTOR = 0.6f;
 // Conversion factor from encoder angle (one 2pi period every two magnets) to rotor angle.
 // Used when the system can not rely on calibration data being present (e.g. during homing)
 constexpr float ENCODER_MAGNET_PITCH = 3.0f;    // [mm]
-constexpr float ENCODER_MAGNET_RADIUS = 30.0f;  // [mm]
+constexpr float ENCODER_MAGNET_RADIUS = 10.0f;  // [mm] 30.0
 constexpr float ENCODER_ANGLE_TO_ROTOR_ANGLE = (ENCODER_MAGNET_PITCH*2.0f) / 
                                                (ENCODER_MAGNET_RADIUS * Constants::TWO_PI_F);
 											   
@@ -38,10 +38,10 @@ constexpr float HOMING_CURRENT    = 0.15f;       // range 0..1
 //--- CALIBRATION -------------------------------------------------------------
 
 // degrees from home position
-constexpr float CALIBRATION_RANGE = 83; 
+constexpr float CALIBRATION_RANGE = 40000; // 83
 
 // velocity of the magnetic field during calibration (lower is more accurate)
-constexpr float CALIBRATION_FIELD_VELOCITY = 20.0f; 
+constexpr float CALIBRATION_FIELD_VELOCITY = 600.0f; // 20.0
 
 // size of the calibration lookup table
 constexpr int ENCODER_LUT_SIZE = 256;
